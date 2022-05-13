@@ -1,0 +1,65 @@
+
+	<div th:fragment="nav-bar" class="menu-bar">
+
+		<div
+			style="height: 120px; width: 100%; border-bottom: 1px solid #FFFFFF; display: flex; justify-content: center; align-items: center;">
+			<h3 style="color: #FFFFFF">DANH MỤC</h3>
+		</div>
+		<div>
+			<div class="menu-item-wrap">
+				<div class="menu-item">
+					<div class="icon">
+						<i class="fal fa-home-lg-alt fa-2x"></i>
+					</div>
+					<a th:href="@{/}" style="text-decoration: none;"><div
+							class="title">Trang chủ</div></a>
+				</div>
+			</div>
+			<div class="menu-item-wrap">
+				<div class="menu-item">
+					<div class="icon">
+						<i class="fal fa-hotel fa-2x"></i>
+					</div>
+					<a th:href="@{/admin/hotel}"><div class="title">Khách sạn</div></a>
+				</div>
+				<div class="menu-sub">
+					<div>Danh sÃ¡ch ráº¡p chiáº¿u</div>
+				</div>
+				<div class="menu-sub">
+					<div>Sá»­a thÃ´ng tin</div>
+				</div>
+			</div>
+			<div class="menu-item-wrap">
+				<div class="menu-item">
+					<div class="icon">
+						<i class="fal fa-video fa-2x"></i>
+					</div>
+					<div class="title">Đặt phòng</div>
+				</div>
+				<div class="menu-sub">
+					<a th:href="@{/admin/booking}" style="text-decoration: none;"><div>Yêu cầu đặt phòng</div></a>
+				</div>
+			</div>
+			
+			
+
+
+
+			<div class="menu-item-wrap">
+				<div class="menu-item">
+					<div class="icon">
+						<i class="fal fa-analytics fa-2x"></i>
+					</div>
+					<div class="title">Thống kê</div>
+				</div>
+				<div class="menu-sub">
+					<a th:href="@{/admin/statistic}"><div>Thống kê đặt phòng</div></a>
+				</div>
+				<div class="menu-sub">
+					<div>Thống kê ....</div>
+				</div>
+				
+			</div>
+
+		</div>
+	</div>

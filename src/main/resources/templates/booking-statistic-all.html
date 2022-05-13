@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Thống kê đặt phòng</title>
+<link rel="icon" href="/images/icon.png">
+<link rel="stylesheet" href="../static/css/all.css"
+	th:href="@{/css/all.css}">
+<link href="../static/css/styles.css" th:href="@{/css/styles.css}"
+	rel="stylesheet" />
+<link
+	href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"
+	rel="stylesheet" crossorigin="anonymous" />
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/js/script.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+
+</head>
+
+<body>
+	<div th:replace="/header :: header"></div>
+	<div style="display: flex;">
+		<div th:replace="/MenuView :: nav-bar"></div>
+		<div class="container" style="margin-top: 10px;">
+			<div class="row" style="display: block;">
+				<h3 style="text-align: center;">Thống kê số lượng đặt phòng</h3>
+				<div style="margin-bottom: 25px;" id="filter-form">
+					<form method="get" th:action="@{/admin/statistic}"
+						style="display: flex;">
+						<div style="width: 20%; margin-right: 10px;">
+							<div>Ngày nhận phòng</div>
+							<input type="date" name="dateFrom" class="form-control" id="dateFrom">
+						</div>
+						<div style="width: 20%; margin-right: 10px;">
+							<div>Ngày trả phòng</div>
+							<input type="date" name="dateTo" class="form-control" id="dateTo">
+						</div>
+						<button id="statistic-btn" type="submit" class="btn btn-primary"
+							style="height: 40px; margin: auto 0 0 0;">Thống kê</button>
+					</form>
+				</div>
+				<button id="statistic-back" style="visibility: hidden;"
+					class="btn btn-secondary">Quay lại</button>
+				<div>
+					<canvas id="myChart" height="100px"></canvas>
+				</div>
+				<div>
+					<canvas id="chartDetail" height="100px"></canvas>
+				</div>
+
+
+
+				<!-- Modal -->
+				<div class="modal fade" id="bookingModal" tabindex="-1"
+					role="dialog" aria-labelledby="exampleModalCenterTitle"
+					aria-hidden="true">
+					<div class="modal-dialog modal-dialog-centered modal-xl"
+						role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<div>
+									<h5 class="modal-title" id="ModalLongTitle">Modal title</h5>
+									<div id="modal-sub-title">danh sach dat phong ngay</div>
+								</div>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+
+							</div>
+							<div class="modal-body">
+								<table class="table table-bordered" id="booking-detail-tbl">
+									<thead>
+										<tr>
+											<th>#</th>
+											<th>Khách hàng</th>
+											<th>Loại phòng</th>
+											<th>Check-in</th>
+											<th>Check-out</th>
+										</tr>
+									</thead>
+									<tbody>
+
+									</tbody>
+								</table>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Close</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+
+				<script th:inline="javascript">
+					const dateFrom= getUrlParameter('dateFrom');
+		    		const dateTo= getUrlParameter('dateTo');
+		    		if(dateFrom != null) document.getElementById("dateFrom").value = dateFrom;
+		    		if(dateTo != null) document.getElementById("dateTo").value = dateTo;
+					var list = /*[[${statistic}]]*/[];
+					const labels = [];
+					const value = [];
+					const backgroundColor = [];
+					for (let i = 0; i < list.length; i++) {
+						labels.push(list[i].name);
+						value.push(list[i].quantity);
+						backgroundColor.push(dynamicColors());
+					}
+					const data = {
+						labels : labels,
+						datasets : [ {
+							label : 'Số phòng được đặt',
+							maxBarThickness : 130,
+							data : value,
+							backgroundColor : backgroundColor,
+							borderWidth : 1
+						} ]
+					};
+					const config = {
+						type : 'bar',
+						data : data,
+						options : {
+							scales : {
+								y : {
+									beginAtZero : true
+								}
+							}
+						},
+					};
+					const myChart = new Chart(document.getElementById('myChart'), config);
+					
+				 document.getElementById("myChart").onclick = function (evt) {
+						const points = myChart.getElementsAtEventForMode(evt, 'nearest', {intersect:true},true);
+					    if(points.length){
+					    	const firstPoint = points[0];
+					    	const value = myChart.data.datasets[firstPoint.datasetIndex].data[firstPoint.index];
+					    	const label = myChart.data.labels[firstPoint.index];
+					    	//var dateFrom= getUrlParameter('dateFrom');
+					    	//var dateTo= getUrlParameter('dateTo');
+					    	var hotel_id;
+					    	switch (label){
+					    		case "Aira Boutique Hanoi Hotel & Spa": 
+					    			hotel_id=1;
+					    			break;
+					    		case "Hanoi Chic Boutique Hotel":
+					    			hotel_id=2;
+					    			break;
+					    		case "Ma Coeur Boutique Hotel":
+					    			hotel_id=3;
+					    			break;
+					    		case "Pan Pacific Hanoi":
+					    			hotel_id=4;
+					    			break;
+					    	}
+					    	localStorage.setItem("hotel_name", label);
+					    	localStorage.setItem("hotel_id", hotel_id);
+					    	$.ajax({
+				        url: "http://localhost:8080/admin/statistic/test",
+				        type: 'GET',
+				        data: {
+				        	hotel_id: hotel_id,
+				        	dateFrom: dateFrom,
+				        	dateTo: dateTo
+				        },
+				       // dataType: 'json',
+				        success: function(res) {
+				            console.log(res);
+				            var label1 = [];
+				            var data = [];
+				           	var myMap = new Map();
+				            $.each(res,function(key,val){
+				            	myMap.set(key, val);
+				            	/* label1.push(key);
+				             	data.push(val); */
+				            });
+				            myMap = new Map([...myMap].sort());
+				            for (const [key, value] of myMap.entries()) {
+				            	label1.push(key);
+				             	data.push(value);
+							} 
+				            bookingDetail(data, label1) // in script.js
+				        },
+				    	error: function(xhr,status, errorThrown) {
+				    		console.log("failed");
+				    		console.log(status);
+				            console.log(errorThrown);
+				      }
+				    });
+					    	}
+				    }; 
+			
+				    document.getElementById("chartDetail").onclick = function (evt){
+				    	var chartDetail = Chart.getChart('chartDetail');
+				    	var points = chartDetail.getElementsAtEventForMode(evt, 'nearest', {intersect:true},true);
+					    if(points.length){
+					    	var firstPoint = points[0];
+					    	var label = chartDetail.data.labels[firstPoint.index];
+					    	console.log(label);
+					    	var hotel_name=localStorage.getItem("hotel_name");
+					    	var hotel_id=localStorage.getItem("hotel_id");
+					    	initBookingModal(hotel_id,hotel_name,label);
+					    }
+				    };
+				    
+				    
+				</script>
+
+
+			</div>
+		</div>
+	</div>
+
+
+</body>
+</html>
