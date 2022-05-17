@@ -12,7 +12,8 @@
 	height: 100vh;
 	width: 15%;
 	background-color: #2F323A;
-	/* position: fixed; */
+	position: sticky;
+	top:0;
 }
 .menu-item {
 	width: 100%;

@@ -69,7 +69,7 @@
 								<td th:text="${type.capacity}"></td>
 								<td th:text="${type.price}"></td>
 								<td style="display: flex; justify-content: flex-end;"><a
-									th:href="@{/admin/hotel/{id}(id=${type.id})}"><button
+									th:href="@{'/admin/type?type_id='+${type.id}}"><button
 											type="button" class="btn btn-success">Chi tiết</button></a></td>
 							</tr>
 						</tbody>

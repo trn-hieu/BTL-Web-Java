@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="ISO-8859-1">
-<title>Đăng nhập</title>
+<meta charset="UTF-8">
+<title>ÄÄng nháº­p</title>
 <link rel="icon" href="/images/icon.png">
 <link rel="stylesheet" href="../static/css/all.css" th:href="@{/css/all.css}">
 <link href="../static/css/styles.css" th:href="@{/css/styles.css}" rel="stylesheet" />
@@ -15,12 +15,12 @@
 <body style="margin: 0;display: flex;"> <!-- font-family: 'Courier New', monospace -->
 <div class ="log-background">
 	<div class="container" style="display: flex;justify-content: center;align-items: center;height: 100%">
-	<form th:action="@{/login}" method="post" id=login-form >
+	<form th:action="@{/admin/login}" method="post" id=login-form >
 		<div class ="log-form">
 			<img alt="" src="/images/icon.png" height="100px" width="100px" >
-			<div class ="title-small" >Quản lý rạp chiếu</div>
+			<div class ="title-small" >Quản lý hệ thống đặt phòng khách sạn</div>
 			<div class="title">Đăng nhập</div>
-			<div id="notify" style="font-size: 12px;color: red;visibility: hidden;">Sai tên đăng nhập/mật khẩu</div>
+			<div id="notify" style="font-size: 12px;color: red;visibility: hidden;">Sai tên đăng nhập hoặc mật khẩu</div>
 			<div class="input">
 				<div class= "input-login">
 					<!-- <div class="icon"><i class="fas fa-user-tie fa-2x"></i></div> -->

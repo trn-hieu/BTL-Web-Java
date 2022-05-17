@@ -11,3 +11,4 @@ public interface RoomTypeService {
 	List<RoomType> getByHotelId(long id);
 	RoomType getById(long id);
 }
+ 

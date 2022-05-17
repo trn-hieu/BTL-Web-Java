@@ -12,6 +12,11 @@ import com.example.demo.service.UserService;
 @Controller
 @RequestMapping("/admin")
 public class AdminMainController {
+	@GetMapping("/login")
+	public String getAdminLoginForm() {
+		return "login-admin";
+	}
+	
 	@GetMapping
 	public String getMainPage() {
 		return "MainView";
