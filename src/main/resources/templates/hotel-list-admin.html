@@ -64,22 +64,30 @@
 									th:field="*{address}">
 							</div>
 							<div style="width: 50%;">
+								<div>Dịch vụ:</div>
+								<select class="form-control width-fix" multiple  name="service">
+								  <option th:each="service : ${service}" th:value="${service.id}" th:text="${service.name}"></option>
+								</select>
+							</div>
+						</div>
+
+						<div class="form-inline">
+							<div style="width: 50%;">
 								<div>Thành phố</div>
 								<select name="calc_shipping_provinces"
 									class="form-control  width-fix" id="thanhPho" required>
 									<option value="">Tỉnh / Thành phố</option>
 								</select>
 							</div>
+							<div style="width: 50%;">
+								<div>Quận</div>
+								<select name="calc_shipping_district"
+									class="form-control  width-fix" id="quan" required>
+									<option value="">Quận / Huyện</option>
+								</select>
+							</div>
 						</div>
-
-						<div style="width: 50%;">
-							<div>Quận</div>
-							<select name="calc_shipping_district"
-								class="form-control  width-fix" id="quan" required>
-								<option value="">Quận / Huyện</option>
-							</select>
-
-						</div>
+						
 						<div>
 							<div>Mô tả:</div>
 							<textarea class="form-control " name="description" rows="7"
@@ -100,6 +108,7 @@
 							<th>Địa chỉ</th>
 							<th>Điện thoại</th>
 							<th></th>
+							<th></th>
 						</tr>
 					</thead>
 					<tbody>
@@ -109,16 +118,21 @@
 							<td
 								th:text="${hotel.address+', '+ hotel.district+', '+hotel.city}"></td>
 							<td th:text="${hotel.phone}"></td>
-							<td style="display: flex; justify-content: flex-end;"><a
+							<td><a
 								th:href="@{/admin/hotel/{id}(id=${hotel.id})}"><button
-										type="button" class="btn btn-success">Chi tiết</button></a></td>
+										type="button" class="btn btn-success">Xem</button></a></td>
+							<td><a
+								th:href="@{/admin/hotel/update/{id}(id=${hotel.id})}"><button
+										type="button" class="btn btn-success">Sửa</button></a></td>
 						</tr>
 					</tbody>
 				</table>
 
 			</div>
 		</div>
+		
 	</div>
+	
 	<script type="text/javascript"
 		src="https://cdn.jsdelivr.net/gh/vietblogdao/js/districts.min.js"></script>
 	<script type="text/javascript">

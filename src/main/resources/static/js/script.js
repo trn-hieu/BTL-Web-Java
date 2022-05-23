@@ -76,7 +76,8 @@ $(document).ready(function() {
 		
 	});	
 	
-	
+	//$('select').selectpicker();
+		
 });
 
 
@@ -277,6 +278,35 @@ var getUrlParameter = function getUrlParameter(sParam) {
 	return null;
 };
 
-
+function initDistrictSelector(district){
+	$('#quan').find('option').remove().end();
+	cityId = document.getElementById('thanhPho').value;
+	select1 = document.getElementById('quan');
+	//$('#quan').find('option').remove().end();
+	$.ajax({
+				        url: "https://api.mysupership.vn/v1/partner/areas/district",
+				        type: 'GET',
+				        data :{
+							province: cityId
+						},
+				        success: function(res) {
+				           var data = res["results"];
+				           for(var i=0; i< data.length;i++){
+					           	var opt = document.createElement('option');
+							    opt.value = data[i]["name"];
+							    opt.innerHTML = data[i]["name"];
+							    select1.appendChild(opt);
+							    if(data[i]["name"] == district){
+									select1[i].selected= true;
+							}
+				           } 
+				        },
+				    	error: function(xhr,status, errorThrown) {
+				    		console.log("failed");
+				    		console.log(status);
+				            console.log(errorThrown);
+				      }
+				    });
+}
 
 
