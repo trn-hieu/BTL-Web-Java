@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.demo.model.Hotel;
 import com.example.demo.model.RoomType;
@@ -24,9 +25,14 @@ public class HotelController {
 	private RoomTypeService roomTypeService;
 	
 	@GetMapping
-	public String getAll(Model model) {
-		List<Hotel> list = hotelService.getAll();
-		model.addAttribute("list", list);
+	public String getAll(Model model, @RequestParam(name = "keyword", required = false)String keyword) {
+		if(keyword==null || keyword.equals("") || keyword.isEmpty()) {
+			List<Hotel> list = hotelService.getAll();
+			model.addAttribute("list", list);
+		}else {
+			List<Hotel> list = hotelService.findByName(keyword);
+			model.addAttribute("list", list);
+		}
 		return "hotel-list-client";
 	}
 	

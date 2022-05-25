@@ -190,7 +190,7 @@ input[type="color"]:focus,
 .uneditable-input:focus { border-color: #5dc3b7;  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(93, 195, 183, 0.6); box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(93, 195, 183, 0.6);}
 
 .log-background {
-	background-image: url('/images/login-wallpapper.png');
+	background-image: url('/images/login-admin-wallpaper.jpg');
 	background-position:center ;
 	width: 100vw;
 	height: 100vh;

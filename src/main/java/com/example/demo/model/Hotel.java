@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -26,10 +27,11 @@ public class Hotel {
 			inverseJoinColumns = @JoinColumn(name="service_id"))
 	private List<Service> services;
 	
-	
-	
 	@OneToMany(mappedBy = "hotel")
 	private List<RoomType> types;
+	
+	@OneToMany(mappedBy = "hotel", cascade = CascadeType.PERSIST)
+	private List<Image> images;
 	
 	public Hotel() {
 		
@@ -116,6 +118,14 @@ public class Hotel {
 
 	public void setTypes(List<RoomType> types) {
 		this.types = types;
+	}
+
+	public List<Image> getImages() {
+		return images;
+	}
+
+	public void setImages(List<Image> images) {
+		this.images = images;
 	}
 	
 	

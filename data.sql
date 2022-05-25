@@ -97,7 +97,7 @@ CREATE TABLE `hotel` (
   `phone` varchar(255) DEFAULT NULL,
   `description` varchar(1000) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -106,7 +106,7 @@ CREATE TABLE `hotel` (
 
 LOCK TABLES `hotel` WRITE;
 /*!40000 ALTER TABLE `hotel` DISABLE KEYS */;
-INSERT INTO `hotel` VALUES (1,'126 Hàng Buồm','Hà Nội','Hoàn Kiếm','Aira Boutique Hanoi Hotel & Spa','03694148','Chào đón bạn đến với Khách sạn Essence Hà Nội, \"Mái nhà xa\" của bạn ở Hà Nội. Khách sạn Essence Hà Nội sẽ mang đến cho bạn quãng thời gian lưu trú thư giãn và dễ chịu nhất có thể. Đây cũng là lý do tại sao nhiều khách du lịch tiếp tục quay trở lại khách sạn sau nhiều năm.'),(2,'51-53 Bát Sứ, Hàng Bồ,Hanoi Chic Boutique Hotel nằm ở quận Hoàn Kiếm, thành phố Hà Nội','Hà Nội','Quận Hoàn Kiếm','Hanoi Chic Boutique Hotel','0396563458','Hanoi Chic Boutique Hotel nằm ở quận Hoàn Kiếm, thành phố Hà Nội, cách Chợ Đồng Xuân 500 m và Nhà thờ Lớn 600 m. Du khách có thể dùng bữa tại bar thức ăn nhẹ trong khuôn viên.'),(3,'40 Lò Sũ, Lý Thái Tổ','Hà Nội','Quận Hoàn Kiếm','Ma Coeur Boutique Hotel','0398525478','- Ma Coeur Boutique Hotel tọa lạc ở 40 Lò Sũ, quận Hoàn Kiếm, Hà Nội.\r\n- Khách sạn có “vị trí vàng” ngay khu trung tâm nội thành Hà Nội. Dù bạn lên kế hoạch cho chuyến đi khám phá thành phố hay công tác đều rất thuận tiện. Cách Hồ Gươm 50m – đây là một trong những địa điểm tham quan nổi tiếng ở trung tâm Hà Nội. Khoảng cách từ khách sạn đến Chợ Đồng Xuân, Nhà thờ lớn, phố bia Tạ Hiện chỉ hơn 500m. Khách sạn ở ngay sát siêu thị nhỏ Vinmart, Circle K, ngân hàng Sacombank, BIDV, Vietcombank. Phố Lò Sũ là đường 2 chiều, thuận tiện cho xe 45 chỗ đón trả khách ngay tại sảnh khách sạn. Bạn có thể lựa chọn các địa điểm tham quan nổi tiếng khác như Văn Miếu Quốc Tử Giám, Lăng Bác, nhà tù Hỏa Lò, trung tâm thương mại Vincom…'),(4,'1 Thanh Niên, Trúc Bạch','Hà Nội','Quận Ba Đình','Pan Pacific Hanoi','0698342468','Đứng sừng sững giữa thành phố với 20 tầng, Pan Pacific Hanoi có tầm nhìn ra Hồ Tây, Hồ Trúc Bạch và Sông Hồng. Khách sạn cách trung tâm thành phố chỉ vài phút nên quý khách có thể đi đến Khu Phố Cổ sôi động trong vòng chỉ 3 km hay dạo bộ ven hồ. Nơi đây có spa đầy đủ dịch vụ, hồ bơi bốn mùa nước nóng trong nhà với mái che có thể kéo vào được và Wi-Fi miễn phí trong toàn bộ khuôn viên.\r\n\r\nCác phòng nghỉ tại đây có phong cách hiện đại và được trang trí với tông màu vàng, trung tính, đồ nội thất hiện đại và thiết kế kiểu Việt Nam. Mỗi phòng đều được trang bị TV màn hình phẳng LCD và minibar đầy ắp đồ. Pan Pacific Hanoi có tầm nhìn ra Hồ Tây, Hồ Trúc Bạch và Sông Hồng. Khách sạn cách trung tâm thành phố chỉ vài phút nên quý khách có thể đi đến Khu Phố Cổ sôi động trong vòng chỉ 3 km hay dạo bộ ven hồ. Nơi đây có spa đầy đủ dịch vụ, hồ bơi bốn mùa nước nóng trong nhà với mái che có thể kéo vào được và Wi-Fi miễn phí trong toàn bộ khuôn viên.');
+INSERT INTO `hotel` VALUES (1,'126 Hàng Buồm','Thành phố Hà Nội','Quận Hoàn Kiếm','Aira Boutique Hanoi Hotel & Spa','0369414854','Chào đón bạn đến với Khách sạn Essence Hà Nội, \"Mái nhà xa\" của bạn ở Hà Nội. Khách sạn Essence Hà Nội sẽ mang đến cho bạn quãng thời gian lưu trú thư giãn và dễ chịu nhất có thể. Đây cũng là lý do tại sao nhiều khách du lịch tiếp tục quay trở lại khách sạn sau nhiều năm.'),(2,'51-53 Bát Sứ, Hàng Bồ','Thành phố Hà Nội','Quận Hoàn Kiếm','Hanoi Chic Boutique Hotel','0396563458','Hanoi Chic Boutique Hotel nằm ở quận Hoàn Kiếm, thành phố Hà Nội, cách Chợ Đồng Xuân 500 m và Nhà thờ Lớn 600 m. Du khách có thể dùng bữa tại bar thức ăn nhẹ trong khuôn viên.'),(3,'40 Lò Sũ, Lý Thái Tổ','Thành phố Hà Nội','Quận Hoàn Kiếm','Ma Coeur Boutique Hotel','0398525478','- Ma Coeur Boutique Hotel tọa lạc ở 40 Lò Sũ, quận Hoàn Kiếm, Hà Nội.\r\n- Khách sạn có “vị trí vàng” ngay khu trung tâm nội thành Hà Nội. Dù bạn lên kế hoạch cho chuyến đi khám phá thành phố hay công tác đều rất thuận tiện. Cách Hồ Gươm 50m – đây là một trong những địa điểm tham quan nổi tiếng ở trung tâm Hà Nội. Khoảng cách từ khách sạn đến Chợ Đồng Xuân, Nhà thờ lớn, phố bia Tạ Hiện chỉ hơn 500m. Khách sạn ở ngay sát siêu thị nhỏ Vinmart, Circle K, ngân hàng Sacombank, BIDV, Vietcombank. Phố Lò Sũ là đường 2 chiều, thuận tiện cho xe 45 chỗ đón trả khách ngay tại sảnh khách sạn. Bạn có thể lựa chọn các địa điểm tham quan nổi tiếng khác như Văn Miếu Quốc Tử Giám, Lăng Bác, nhà tù Hỏa Lò, trung tâm thương mại Vincom…'),(4,'1 Thanh Niên, Trúc Bạch','Thành phố Hà Nội','Quận Ba Đình','Pan Pacific Hanoi','0698342468','Đứng sừng sững giữa thành phố với 20 tầng, Pan Pacific Hanoi có tầm nhìn ra Hồ Tây, Hồ Trúc Bạch và Sông Hồng. Khách sạn cách trung tâm thành phố chỉ vài phút nên quý khách có thể đi đến Khu Phố Cổ sôi động trong vòng chỉ 3 km hay dạo bộ ven hồ. Nơi đây có spa đầy đủ dịch vụ, hồ bơi bốn mùa nước nóng trong nhà với mái che có thể kéo vào được và Wi-Fi miễn phí trong toàn bộ khuôn viên.\r\n\r\nCác phòng nghỉ tại đây có phong cách hiện đại và được trang trí với tông màu vàng, trung tính, đồ nội thất hiện đại và thiết kế kiểu Việt Nam. Mỗi phòng đều được trang bị TV màn hình phẳng LCD và minibar đầy ắp đồ. Pan Pacific Hanoi có tầm nhìn ra Hồ Tây, Hồ Trúc Bạch và Sông Hồng. Khách sạn cách trung tâm thành phố chỉ vài phút nên quý khách có thể đi đến Khu Phố Cổ sôi động trong vòng chỉ 3 km hay dạo bộ ven hồ. Nơi đây có spa đầy đủ dịch vụ, hồ bơi bốn mùa nước nóng trong nhà với mái che có thể kéo vào được và Wi-Fi miễn phí trong toàn bộ khuôn viên.');
 /*!40000 ALTER TABLE `hotel` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,7 +126,7 @@ CREATE TABLE `hotel_service` (
   KEY `FKa94xlwpvda1q3kh1gvcrxxhfa` (`hotel_id`),
   CONSTRAINT `FKa94xlwpvda1q3kh1gvcrxxhfa` FOREIGN KEY (`hotel_id`) REFERENCES `hotel` (`id`),
   CONSTRAINT `FKt396hq6f4k8qrv18i4k6omv3e` FOREIGN KEY (`service_id`) REFERENCES `service` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=159 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,8 +135,35 @@ CREATE TABLE `hotel_service` (
 
 LOCK TABLES `hotel_service` WRITE;
 /*!40000 ALTER TABLE `hotel_service` DISABLE KEYS */;
-INSERT INTO `hotel_service` VALUES (1,2,1),(1,3,2),(1,1,3),(1,7,4),(1,5,5),(1,6,6);
+INSERT INTO `hotel_service` VALUES (2,1,18),(2,2,19),(2,3,20),(2,10,21),(2,11,22),(2,12,23),(3,4,24),(3,5,25),(3,6,26),(3,8,27),(3,9,28),(4,1,29),(4,2,30),(4,3,31),(4,6,32),(4,7,33),(4,8,34),(4,9,35),(4,10,36),(1,1,151),(1,2,152),(1,3,153),(1,5,154),(1,6,155),(1,9,156);
 /*!40000 ALTER TABLE `hotel_service` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `image`
+--
+
+DROP TABLE IF EXISTS `image`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `image` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `url` varchar(255) DEFAULT NULL,
+  `hotel_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKnmctq4w6r7lkp880d4utoop2l` (`hotel_id`),
+  CONSTRAINT `FKnmctq4w6r7lkp880d4utoop2l` FOREIGN KEY (`hotel_id`) REFERENCES `hotel` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `image`
+--
+
+LOCK TABLES `image` WRITE;
+/*!40000 ALTER TABLE `image` DISABLE KEYS */;
+INSERT INTO `image` VALUES (8,'/images/hotel/Aira Boutique Hanoi Hotel & Spa.jpg',1),(9,'/images/hotel/Aira Boutique Hanoi Hotel & Spa.webp',1),(10,'/images/hotel/Aira Boutique Hanoi Hotel & Spa-1.jpg',1),(11,'/images/hotel/Aira Boutique Hanoi Hotel & Spa-2.jpg',1),(12,'/images/hotel/Hanoi Chic Boutique Hotel.jpg',2),(13,'/images/hotel/Hanoi Chic Boutique Hotel-1.jpg',2),(14,'/images/hotel/Hanoi Chic Boutique Hotel-2.jpg',2),(15,'/images/hotel/Hanoi Chic Boutique Hotel-3.jpg',2),(16,'/images/hotel/Ma Coeur Boutique Hotel.jpg',3),(17,'/images/hotel/Ma Coeur Boutique Hotel-1.jpg',3),(18,'/images/hotel/Ma Coeur Boutique Hotel-2.jpg',3),(19,'/images/hotel/Ma Coeur Boutique Hotel.webp',3),(20,'/images/hotel/Pan Pacific Hanoi.jpg',4),(21,'/images/hotel/Pan Pacific Hanoi-1.jpg',4),(22,'/images/hotel/Pan Pacific Hanoi-2.jpg',4),(23,'/images/hotel/Pan Pacific Hanoi-3.jpg',4);
+/*!40000 ALTER TABLE `image` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -310,4 +337,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-23 14:05:33
+-- Dump completed on 2022-05-25 16:23:04

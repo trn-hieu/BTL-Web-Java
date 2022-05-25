@@ -42,8 +42,8 @@
 				<div style="margin-bottom: 20px;display: none;" id="hotel-form-wraper">
 					<button id="btn-cancel-form" type="button" class="btn btn-danger" style="border-radius: 50%;margin-right: 10px;"><i class="fal fa-times"></i></button>
 					<button type="submit" class="btn btn-primary" onmouseover="saveProcess()" form="add-hotel">Thêm khách sạn</button>
-					<form th:action="@{/admin/hotel/create}" method="post" th:object=${hotel} id="add-hotel">
-						<div class="form-inline">
+					<form th:action="@{/admin/hotel/create}" method="post" th:object=${hotel} id="add-hotel"   enctype="multipart/form-data">
+						<div class="form-inline" style="margin-top: 10px;">
 							<div style="width: 50%;">
 								<div>Tên khách sạn:</div>
 								<input class="form-control width-fix" type="text" name="name"
@@ -57,7 +57,7 @@
 									oninput="this.setCustomValidity('')">
 							</div>
 						</div>
-						<div class="form-inline">
+						<div class="form-inline" style="margin-top: 10px;">
 							<div style="width: 50%;">
 								<div>Địa chỉ:</div>
 								<input class="form-control width-fix" type="text" name="address"
@@ -71,7 +71,7 @@
 							</div>
 						</div>
 
-						<div class="form-inline">
+						<div class="form-inline" style="margin-top: 10px;">
 							<div style="width: 50%;">
 								<div>Thành phố</div>
 								<select name="calc_shipping_provinces"
@@ -88,11 +88,24 @@
 							</div>
 						</div>
 						
-						<div>
+						<div style="margin-top: 10px;">
 							<div>Mô tả:</div>
 							<textarea class="form-control " name="description" rows="7"
 								th:field="*{description}"></textarea>
 						</div>
+						
+						<div style="margin-top: 10px;">
+							<div>Chọn ảnh:</div>
+							<div>
+								<div class="custom-file" style="width: 40%;">
+								  <input type="file" class="custom-file-input"  name="file">
+								  <label class="custom-file-label" for="customFile" style="overflow: hidden;">Chọn file</label>
+								</div><br>
+								
+							</div>
+							
+						</div>
+						
 						<input type="hidden" name="city" id="thanhpho1" th:field="*{city}">
 						<input type="hidden" id="quan1" name="district"
 							th:field="*{district}">
@@ -147,6 +160,14 @@
 		$('#check').change(function() {
 			$('#btncheck').prop("disabled", !this.checked);
 		}).change()
+		
+		$('.custom-file-input').on('change',function(){
+                //get the file name
+                var fileName = $(this).val();
+                //replace the "Choose a file" label
+                $(this).siblings(":first").html(fileName);
+            })
+		
 	</script>
 	<script>
 		//<![CDATA[

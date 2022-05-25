@@ -11,4 +11,5 @@ public interface HotelService {
 	List<Hotel> getAll();
 	Hotel getById(long id);
 	void save(Hotel hotel);
+	List<Hotel> findByName(String name);
 }

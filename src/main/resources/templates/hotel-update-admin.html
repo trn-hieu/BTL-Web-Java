@@ -42,7 +42,7 @@
 					<a href="/admin/hotel"><button type="button" class="btn btn-secondary">Quay lại</button></a>
 					<button type="submit" class="btn btn-primary" onmouseover="saveProcess()" form="add-hotel">Cập nhật</button>
 					<h3 style="margin: 15px 0 25px 0;text-align: center;">Cập nhật thông tin Khách sạn</h3>
-					<form th:action="@{/admin/hotel/update/{id}(id=${hotel.id})}" method="post" th:object=${hotel} id="add-hotel">
+					<form th:action="@{/admin/hotel/update/{id}(id=${hotel.id})}" method="post" th:object=${hotel} id="add-hotel" enctype="multipart/form-data">
 						<div class="form-inline">
 							<div style="width: 50%;">
 								<div>Tên khách sạn:</div>
@@ -65,7 +65,7 @@
 							</div>
 							<div style="width: 50%;">
 								<div>Dịch vụ:</div>
-								<select class="form-control width-fix" multiple  name="service">
+								<select class="form-control width-fix" multiple  name="service" id="serviceSelector">
 								  <option th:each="service : ${service}" th:value="${service.id}" th:text="${service.name}"></option>
 								</select>
 							</div>
@@ -93,6 +93,9 @@
 							<textarea class="form-control " name="description" rows="7"
 								th:field="*{description}"></textarea>
 						</div>
+						
+						
+						
 						<input type="hidden" name="city" id="thanhpho1" th:field="*{city}">
 						<input type="hidden" id="quan1" name="district" th:field="*{district}">
 					</form>
@@ -118,7 +121,9 @@
 		}
 		
 	</script>
+	
 	<script th:inline="javascript">
+		/*<![CDATA[*/
 		var city = /*[[${hotel.city}]]*/[];
 		var district = /*[[${hotel.district}]]*/[];
 		select = document.getElementById('thanhPho');
@@ -145,6 +150,19 @@
 				      }
 				    });
 		
+			var serviceAvailable =/*[[${serviceAvailable}]]*/[];
+			console.log(serviceAvailable);
+			
+			var options = document.getElementById('serviceSelector').options;
+			for (let i = 0; i < options.length; i++) { 
+			  console.log(options[i].value);
+			  for(let j=0;j< serviceAvailable.length; j++){
+			  	if(options[i].value == serviceAvailable[j])
+			  		options[i].selected =true;
+			  }
+			}
+			
+ 		/*]]>*/
 	</script>
 
 </body>

@@ -30,6 +30,11 @@ public class HotelServiceImpl implements HotelService{
 		hotelRepo.save(hotel);
 		
 	}
+
+	@Override
+	public List<Hotel> findByName(String name) {
+		return hotelRepo.findHotelByName(name);
+	}
 	
 	
 }

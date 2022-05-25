@@ -44,42 +44,33 @@ crossorigin="anonymous"></script>
 
         <!--====== App Content ======-->
         <div class="app-content">
-
+			
+			<!--====== Banner ======-->
+			<div style="background-image: url('/images/banner-main.jpg');height: 500px;background-position: bottom;">
+				<div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                        	<div style="color: white;margin-top: 120px;">
+                        		<h1 style="font-size: 40px;margin-bottom: 10px;">Trải nghiệm kỳ nghỉ tuyệt vời</h1>
+                        		<h4 style="font-size: 20px;font-weight: normal;">Combo khách sạn và hàng loạt ưu đãi hấp dẫn</h4>
+                        	</div>
+                        </div>
+                    </div>
+                </div>
+			
+			</div>
+			
+			
             <!--====== Section 1 ======-->
             <div class="u-s-p-y-90">
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="shop-p">
-                                <div class="shop-p__toolbar u-s-m-b-30">
-                                    
-                                    <div class="shop-p__tool-style">
-                                        <div class="tool-style__group u-s-m-b-8">
-
-                                            <span class="js-shop-filter-target" data-side="#side-filter">Filters</span>
-
-                                           <!--  <span class="js-shop-grid-target">Grid</span> -->
-
-                                            <span class="js-shop-list-target is-active">List</span></div>
-                                        <form>
-                                            <div class="tool-style__form-wrap">
-                                                <div class="u-s-m-b-8"><select class="select-box select-box--transparent-b-2">
-                                                        <option>Show: 8</option>
-                                                        <option selected>Show: 12</option>
-                                                        <option>Show: 16</option>
-                                                        <option>Show: 28</option>
-                                                    </select></div>
-                                                <div class="u-s-m-b-8"><select class="select-box select-box--transparent-b-2">
-                                                        <option selected>Sort By: Newest Items</option>
-                                                        <option>Sort By: Latest Items</option>
-                                                        <option>Sort By: Best Selling</option>
-                                                        <option>Sort By: Best Rating</option>
-                                                        <option>Sort By: Lowest Price</option>
-                                                        <option>Sort By: Highest Price</option>
-                                                    </select></div>
-                                            </div>
-                                        </form>
-                                    </div>
+                                <div style="color: black;margin-bottom: 30px;border-bottom: 1px solid #b9b9b9;">
+                                	<h2>Ưu đãi tốt nhất hôm nay</h2>
+                                	<h4 style="font-weight: 600;">Nhanh tay đặt ngay</h4>
+                                
                                 </div>
                                 <div class="shop-p__collection">
                                     <div class="row is-list-active">
@@ -89,8 +80,12 @@ crossorigin="anonymous"></script>
                                                 <div class="product-m__thumb">
 
                                                     <a class="aspect aspect--bg-grey aspect--square u-d-block" th:href="@{/hotel/{id}(id=${list.id})}">
-
-                                                        <img class="aspect__img" src="images/product/men/product6.jpg" alt=""></a>
+														<th:block	th:each="image,iStat:${list.images}" >
+															<th:block th:if="${iStat.index}=='0'">
+	                                                        	<img class="aspect__img" th:src="${image.url}" alt="">
+	                                                        </th:block>
+                                                        </th:block>
+                                                     </a>
                                                     
                                                     <div class="product-m__add-cart">
 
@@ -105,13 +100,14 @@ crossorigin="anonymous"></script>
                                                     <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i>
 
                                                         <span class="product-m__review">(23)</span></div>
-                                                    <div class="product-m__price">$125.00</div>
+                                                   <!--  <div class="product-m__price">$125.00</div> -->
                                                     <div class="product-m__hover">
                                                         <!-- <div class="product-m__preview-description">
                                                             <span th:text="${list.description}">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
                                                         </div> -->
                                                         
                                                     </div>
+                                                    <div style="color: black;font-weight: 700;font-size: 14px;margin: 5px 0 5px 0;">Các dịch vụ bao gồm:</div>
 	                                                    <div style="font-size: 14px;width: 60%;display: flex;flex-wrap: wrap;color: #28871c;font-weight: 700;font-family: inherit;">
 	                                                    	<div th:each ="services : ${list.services}" style="width: 50%">
 	                                                    		<i class="fas fa-check"></i><span th:text="${services.name}" style="margin-left: 3px;"></span>
