@@ -4,6 +4,7 @@ import java.security.Principal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 
@@ -71,4 +72,22 @@ public class BookingController {
 		return "redirect:../";
 	}
 	
+	@GetMapping
+	public String getAllByUser(Model model, Principal principal, @RequestParam(value = "status", required = false)String status) {
+		System.out.println(principal.getName());
+		if(status.equalsIgnoreCase("all")) status = null;
+		List<Booking> bookings = bookingService.getByUsername(principal.getName(), status);
+		model.addAttribute("bookings", bookings);
+		return "booking-list-client";
+	}
+	
+	@PostMapping("/cancel")
+	public String cancelBooking(@RequestParam("booking_id")long id) {
+		Booking booking = bookingService.getById(id);
+		if(booking.getStatus().equalsIgnoreCase(BookingStatus.REQUEST.toString())) {
+			booking.setStatus(BookingStatus.CANCEL.toString());
+			bookingService.save(booking);
+		}
+		return "redirect:/booking";
+	}
 }

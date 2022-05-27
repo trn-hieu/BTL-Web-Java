@@ -309,4 +309,8 @@ function initDistrictSelector(district){
 				    });
 }
 
+function submitStatusForm(){
+	$('#statusFilter').submit();
+}
+
 

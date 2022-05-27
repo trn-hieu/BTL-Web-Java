@@ -42,6 +42,11 @@ public class BookingServiceImpl implements BookingService {
 	public List<Booking> getByHotelAndDate(long hotel_id, String date) {
 		return bookingRepo.getByDateAndHotel(hotel_id, date);
 	}
+
+	@Override
+	public List<Booking> getByUsername(String username, String status) {
+		return bookingRepo.getBookingByUsername(username, status);
+	}
 	
 	
 }

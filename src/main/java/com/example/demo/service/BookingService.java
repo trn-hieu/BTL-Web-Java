@@ -13,4 +13,5 @@ public interface BookingService {
 	boolean setStatus(long id, String status);
 	Booking getById(long id);
 	List<Booking> getByHotelAndDate(long hotel_id, String date);
+	List<Booking> getByUsername(String username, String status);
 }

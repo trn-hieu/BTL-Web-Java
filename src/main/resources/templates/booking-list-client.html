@@ -8,7 +8,9 @@
     <meta name="author" content="">
     <link href="images/favicon.png" rel="shortcut icon">
     <title>Ludus - Electronics, Apparel, Computers, Books, DVDs & more</title>
-
+	
+	<script type="text/javascript" src="/js/script.js"></script>
+	
     <!--====== Google Font ======-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
 
@@ -21,11 +23,22 @@
     <!--====== App ======-->
     <link rel="stylesheet" href="css/app.css">
     
-    <script src="/js/jquery-3.6.0.min.js"></script>
-	<script type="text/javascript" src="/js/script.js" ></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-crossorigin="anonymous"></script>
+    <style type="text/css">
+    	.manage-o__badge{
+    	width: auto;}
+    	button {
+		  background: none!important;
+		  border: none;
+		  padding: 0!important;
+		  /*optional*/
+		  font-family: arial, sans-serif;
+		  /*input has OS specific font-family*/
+		  color: red;
+		  text-decoration: underline;
+		  cursor: pointer;
+		  text-decoration: none;
+		}
+    </style>
 </head>
 <body class="config">
     <div class="preloader is-active">
@@ -44,123 +57,128 @@ crossorigin="anonymous"></script>
 
         <!--====== App Content ======-->
         <div class="app-content">
-			
-			<!--====== Banner ======-->
-			<div style="background-image: url('/images/banner-main.jpg');height: 500px;background-position: bottom;">
-				<div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                        	<div style="color: white;margin-top: 120px;">
-                        		<h1 style="font-size: 40px;margin-bottom: 10px;">Trải nghiệm kỳ nghỉ tuyệt vời</h1>
-                        		<h4 style="font-size: 20px;font-weight: normal;">Combo khách sạn và hàng loạt ưu đãi hấp dẫn</h4>
-                        	</div>
-                        </div>
-                    </div>
-                </div>
-			
-			</div>
-			
-			
+
             <!--====== Section 1 ======-->
-            <div class="u-s-p-y-90">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="shop-p">
-                                <div style="color: black;margin-bottom: 30px;border-bottom: 1px solid #b9b9b9;">
-                                	<h2>Ưu đãi tốt nhất hôm nay</h2>
-                                	<h4 style="font-weight: 600;">Nhanh tay đặt ngay</h4>
-                                
-                                </div>
-                                <div class="shop-p__collection">
-                                    <div class="row is-list-active">
-                                    
-                                        <div class="col-lg-3 col-md-4 col-sm-6" th:each="list : ${list}">
-                                            <div class="product-m">
-                                                <div class="product-m__thumb">
+            <div class="u-s-p-y-60">
 
-                                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" th:href="@{/hotel/{id}(id=${list.id})}">
-														<th:block	th:each="image,iStat:${list.images}" >
-															<th:block th:if="${iStat.index}=='0'">
-	                                                        	<img class="aspect__img" th:src="${image.url}" alt="">
-	                                                        </th:block>
-                                                        </th:block>
-                                                     </a>
-                                                    
-                                                    <div class="product-m__add-cart">
+                <!--====== Section Content ======-->
+                <div class="section__content">
+                    <div class="container">
+                        <div class="breadcrumb">
+                            <div class="breadcrumb__wrap">
+                                <ul class="breadcrumb__list">
+                                    <li class="has-separator">
 
-                                                        <a class="btn--e-brand" th:href="@{/hotel/{id}(id=${list.id})}">ĐẶT PHÒNG</a></div>
-                                                </div>
-                                                <div class="product-m__content">
-                                                    <div class="product-m__name">
+                                        <a href="/">Trang chủ</a></li>
+                                    <li class="is-marked">
 
-                                                        <a href="product-detail.html" th:text="${list.name}" th:href="@{/hotel/{id}(id=${list.id})}" style="font-size: 20px;">New Fashion B Nice Elegant</a>
-                                                    </div>
-                                                    <i class="fas fa-map-marker-alt" style="color: #bb2727"></i><span th:text="${list.address+', '+ list.district+', '+list.city}" style="margin-left: 4px;font-size: 14px;color: #bb2727;"></span>
-                                                    <div class="product-m__rating gl-rating-style"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-
-                                                        <span class="product-m__review">(23)</span></div>
-                                                   <!--  <div class="product-m__price">$125.00</div> -->
-                                                    <div class="product-m__hover">
-                                                        <!-- <div class="product-m__preview-description">
-                                                            <span th:text="${list.description}">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</span>
-                                                        </div> -->
-                                                        
-                                                    </div>
-                                                    <div style="color: black;font-weight: 700;font-size: 14px;margin: 5px 0 5px 0;">Các dịch vụ bao gồm:</div>
-	                                                    <div style="font-size: 14px;width: 60%;display: flex;flex-wrap: wrap;color: #28871c;font-weight: 700;font-family: inherit;">
-	                                                    	<div th:each ="services : ${list.services}" style="width: 50%">
-	                                                    		<i class="fas fa-check"></i><span th:text="${services.name}" style="margin-left: 3px;"></span>
-	                                                    	</div>
-	                                                    </div>
-                                                   	<div style="position: absolute;bottom: 0;right: 0;margin: 0 8px;">
-                                                   		<div style="text-align: right;">Giá chỉ từ</div>
-                                                   		<div style="color: #e12d2d;font-size: 22px;font-weight: 700;">₫ 1.400.000</div>
-                                                   	</div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                        
-                                       
-                                    </div>
-                                </div>
-                                <div class="u-s-p-y-60">
-
-                                    <!--====== Pagination ======-->
-                                    <ul class="shop-p__pagination">
-                                        <li class="is-active">
-
-                                            <a href="shop-list-full.html">1</a></li>
-                                        <li>
-
-                                            <a href="shop-list-full.html">2</a></li>
-                                        <li>
-
-                                            <a href="shop-list-full.html">3</a></li>
-                                        <li>
-
-                                            <a href="shop-list-full.html">4</a></li>
-                                        <li>
-
-                                            <a class="fas fa-angle-right" href="shop-list-full.html"></a></li>
-                                    </ul>
-                                    <!--====== End - Pagination ======-->
-                                </div>
+                                        <a href="/booking">Booking</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <!--====== End - Section 1 ======-->
+
+
+            <!--====== Section 2 ======-->
+            <div class="u-s-p-b-60">
+
+                <!--====== Section Content ======-->
+                <div class="section__content">
+                    <div class="dash">
+                        <div class="container">
+                            <div class="row">
+                                
+                                <div class="col-md-12">
+                                    <div class="dash__box dash__box--shadow dash__box--radius dash__box--bg-white u-s-m-b-30">
+                                        <div class="dash__pad-2">
+                                            <h1 class="dash__h1 u-s-m-b-14">Lịch sử đặt phòng</h1>
+
+                                            <span class="dash__text u-s-m-b-30">Bạn có thể xem những lần đặt phòng của mình tại đây</span>
+                                            <form class="m-order u-s-m-b-30" th:action="@{/booking}" id="statusFilter">
+                                                <div class="m-order__select-wrapper">
+
+                                                    <label class="u-s-m-r-8" for="my-order-sort">Hiển thị</label>
+                                                    <select class="select-box select-box--primary-style" id="my-order-sort" name="status" onchange="submitStatusForm()">
+                                                        <option selected value="all">Tất cả</option>
+                                                        <option value="REQUEST">Đang chờ xác nhận</option>
+                                                        <option value="ACCEPTED">Đã xác nhận</option>
+                                                        <option value="CANCEL">Đã hủy</option>
+                                                        <option value="REFUSED">Bị từ chối</option>
+                                                    </select></div>
+                                            </form>
+                                            <div class="m-order__list">
+                                            
+                                                <div class="m-order__get" th:each="booking :${bookings}">
+                                                    <div class="manage-o__header u-s-m-b-30">
+                                                        <div class="dash-l-r">
+                                                            <div>
+                                                                <div class="manage-o__text-2 u-c-secondary" th:text="${'Order #'+booking.id}">Order #305423126</div>
+                                                                <div class="manage-o__text u-c-silver" th:text="${'Check in: '+#dates.format(booking.dateFrom,'dd/MM/yyyy') + ' '+booking.checkIn}">Thời gian nhận phòng</div>
+                                                            	<div class="manage-o__text u-c-silver" th:text="${'Check out: '+#dates.format(booking.dateTo,'dd/MM/yyyy') + ' '+booking.checkOut}">Thời gian trả phòng</div>
+                                                            </div>
+                                                            <div th:if="${booking.status == 'REQUEST'}">
+                                                                <div class="dash__link dash__link--brand">
+																	<form th:action="@{/booking/cancel}" method="post">
+																		<input th:value="${booking.id}" type="hidden" name="booking_id">
+                                                                    	<button type="submit">Hủy</button>
+                                                                    </form>	
+                                                                 </div>
+                                                            </div>
+                                                            <div th:if="${booking.status == 'ACCEPTED'}" style="font-size: 14px;color: #00a500bd">Vui lòng cung cấp thông tin cá nhân khi nhận phòng</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="manage-o__description">
+                                                        <div class="description__container">
+                                                            <div class="description__img-wrap" style="height: 100%;">
+																<th:block	th:each="image,iStat:${booking.type.hotel.images}" >
+																	<th:block th:if="${iStat.index}=='0'">
+                                                               	 		<img class="u-img-fluid" th:src="${image.url}" alt=""></div>
+                                                             		</th:block>
+                                                        		</th:block>
+                                                             
+                                                             <div>
+	                                                            <div class="description-title" th:text="${booking.type.hotel.name}">Tên khách sạn</div>
+	                                                            <div class="manage-o__text u-c-silver" th:text="${booking.type.name}" style="margin-left: 12px;">Loại phòng</div>
+                                                             </div>
+                                                        </div>
+                                                        <div class="description__info-wrap">
+                                                            <div th:switch="${booking.status}">
+                                                                <span class="manage-o__badge badge--shipped" th:case="ACCEPTED">Đã xác nhận</span>
+                                                                <span class="manage-o__badge badge--processing" th:case="REQUEST">Chờ xác nhận</span>
+                                                                <span class="manage-o__badge badge--delivered" th:case="REFUSED">Đơn đặt bị từ chối</span>
+                                                                <span class="manage-o__badge badge--delivered" th:case="CANCEL">Đã hủy</span>
+                                                            </div>
+                                                            <!-- <div>
+
+                                                                <span class="manage-o__text-2 u-c-silver">Quantity:
+
+                                                                    <span class="manage-o__text-2 u-c-secondary">1</span></span>
+                                                            </div> -->
+                                                            <div>
+
+                                                                <span class="manage-o__text-2 u-c-silver">Giá phòng:
+
+                                                                    <span class="manage-o__text-2 u-c-secondary" th:text="${#numbers.formatDecimal(booking.type.price, 1, 'DEFAULT', 0, 'DEFAULT')}">$16.00</span></span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--====== End - Section Content ======-->
+            </div>
+            <!--====== End - Section 2 ======-->
         </div>
         <!--====== End - App Content ======-->
 
@@ -322,19 +340,6 @@ crossorigin="anonymous"></script>
                 </div>
             </div>
         </footer>
-
-        <!--====== Side Filters ======-->
-
-        <!--====== End - Side Filters ======-->
-
-
-        <!--====== Modal Section ======-->
-
-
-        
-
-
-        
     </div>
     <!--====== End - Main App ======-->
 
@@ -348,6 +353,10 @@ crossorigin="anonymous"></script>
         ga.l = +new Date;
         ga('create', 'UA-XXXXX-Y', 'auto');
         ga('send', 'pageview')
+        
+        
+  
+        
     </script>
     <script src="https://www.google-analytics.com/analytics.js" async defer></script>
 

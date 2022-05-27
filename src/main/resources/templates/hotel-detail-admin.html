@@ -32,8 +32,7 @@
 				<div>
 					<h3>Thông tin khách sạn</h3>
 					<div th:text="${hotel.name}"></div>
-					<div
-						th:text="${hotel.address+', '+ hotel.district+', '+hotel.city}"></div>
+					<div th:text="${hotel.address+', '+ hotel.district+', '+hotel.city}"></div>
 					<div th:text="${hotel.description}"></div>
 					<h3>Dịch vụ tại khách sạn</h3>
 					<ul class="pd-detail__policy-list"
@@ -67,7 +66,7 @@
 								<td th:text="${type.roomView}"></td>
 								<td th:text="${type.bedInfor}"></td>
 								<td th:text="${type.capacity}"></td>
-								<td th:text="${type.price}"></td>
+								<td th:text="${#numbers.formatDecimal(type.price, 1, 'DEFAULT', 0, 'DEFAULT')}"></td>
 								<td style="display: flex; justify-content: flex-end;"><a
 									th:href="@{'/admin/type?type_id='+${type.id}}"><button
 											type="button" class="btn btn-success">Chi tiết</button></a></td>
@@ -75,7 +74,7 @@
 						</tbody>
 					</table>
 				</div>
-				<div>
+				<!-- <div>
 					<h3>Các phòng hiện có</h3>
 					<table class="table table-striped">
 						<thead>
@@ -97,7 +96,7 @@
 							</tr>
 						</tbody>
 					</table>
-				</div>
+				</div> -->
 
 			</div>
 		</div>

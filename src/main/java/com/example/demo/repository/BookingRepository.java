@@ -27,4 +27,12 @@ public interface BookingRepository extends JpaRepository<Booking, Long> {
 			+ "and booking.date_from = :date"
 			,nativeQuery = true)
 	List<Booking> getByDateAndHotel(@Param("hotel_id")long hotel_id, @Param("date")String date);
+	
+	@Query(value = "SELECT booking.* from booking, customer, user where booking.customer_id = customer.user_id and customer.user_id = user.id "
+			+ "and user.username =?1 and (?2 is null or booking.status = ?2)"
+			+ " order by DATE_FORMAT(booking.date_from ,'%d-%m-%Y') desc, check_in"
+			, nativeQuery = true)
+	List<Booking> getBookingByUsername(String username, String status);
+	
+	
 }
