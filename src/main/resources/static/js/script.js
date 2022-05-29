@@ -60,6 +60,7 @@ $(document).ready(function() {
 		document.getElementById("myChart").style.display = "block";
 		var chartDetail = Chart.getChart('chartDetail')
 		chartDetail.destroy();
+		$('#page-title').text('Thống kê số lượng đặt phòng');
 	});
 	
 	$('#btn-toggle-form').click(function(e) {
@@ -192,6 +193,8 @@ function bookingDetail(data, labels) {
 	document.getElementById("statistic-back").style.visibility="visible" ;
 	document.getElementById("myChart").style.display = "none";
 	const chartDetail = new Chart(document.getElementById('chartDetail'), config1);
+	var hotel_name=localStorage.getItem("hotel_name");
+	$('#page-title').text('Thống kê số lượng đặt phòng của '+hotel_name);
 }
 
 

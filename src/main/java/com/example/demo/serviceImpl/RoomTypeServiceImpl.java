@@ -23,6 +23,11 @@ public class RoomTypeServiceImpl implements RoomTypeService{
 	public RoomType getById(long id) {
 		return roomTypeRepo.getById(id);
 	}
+
+	@Override
+	public RoomType save(RoomType type) {
+		return roomTypeRepo.save(type);
+	}
 	
 	
 }

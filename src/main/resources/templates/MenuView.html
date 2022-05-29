@@ -6,23 +6,27 @@
 			<h3 style="color: #FFFFFF">DANH MỤC</h3>
 		</div>
 		<div>
-			<div class="menu-item-wrap">
-				<div class="menu-item">
-					<div class="icon">
-						<i class="fal fa-home-lg-alt fa-2x"></i>
+			<a th:href="@{/}" style="text-decoration: none;">
+				<div class="menu-item-wrap">
+					<div class="menu-item">
+						<div class="icon">
+							<i class="fal fa-home-lg-alt fa-2x"></i>
+						</div>
+						<div
+								class="title">Trang chủ</div>
 					</div>
-					<a th:href="@{/}" style="text-decoration: none;"><div
-							class="title">Trang chủ</div></a>
 				</div>
-			</div>
-			<div class="menu-item-wrap">
-				<div class="menu-item">
-					<div class="icon">
-						<i class="fal fa-hotel fa-2x"></i>
+			</a>
+			<a th:href="@{/admin/hotel}"  style="text-decoration: none;">
+				<div class="menu-item-wrap">
+					<div class="menu-item">
+						<div class="icon">
+							<i class="fal fa-hotel fa-2x"></i>
+						</div>
+						<div class="title">Khách sạn</div>
 					</div>
-					<a th:href="@{/admin/hotel}"  style="text-decoration: none;"><div class="title">Khách sạn</div></a>
 				</div>
-			</div>
+			</a>
 			<div class="menu-item-wrap">
 				<div class="menu-item">
 					<div class="icon">

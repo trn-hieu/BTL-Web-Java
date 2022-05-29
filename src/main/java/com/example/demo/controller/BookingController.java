@@ -62,11 +62,6 @@ public class BookingController {
 		booking.setCheckOut(LocalTime.parse(checkout));
 		booking.setStatus(BookingStatus.REQUEST.toString());
 		booking.setType(entityManager.getReference(RoomType.class, roomTypeId));
-		//
-		System.out.println(principal.getName());
-		if(customerRepo.findByUsername(principal.getName()) == null) System.out.println("GGGGGGGGGGGGGGGGGGGGGGGG");
-		System.out.println(customerRepo.findByUsername(principal.getName()).getFirstName());
-		//
 		booking.setCustomer(customerRepo.findByUsername(principal.getName()));
 		bookingService.save(booking);
 		return "redirect:../";
@@ -75,7 +70,7 @@ public class BookingController {
 	@GetMapping
 	public String getAllByUser(Model model, Principal principal, @RequestParam(value = "status", required = false)String status) {
 		System.out.println(principal.getName());
-		if(status.equalsIgnoreCase("all")) status = null;
+		if(status != null && status.equalsIgnoreCase("all")) status = null;
 		List<Booking> bookings = bookingService.getByUsername(principal.getName(), status);
 		model.addAttribute("bookings", bookings);
 		return "booking-list-client";

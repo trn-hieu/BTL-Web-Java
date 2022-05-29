@@ -62,7 +62,7 @@ public class AdminHotelController {
 	}
 	
 	@GetMapping("/{id}")
-	public String getHotelByID(Model model, @PathVariable("id")long id) {
+	public String getHotelByID(Model model, @PathVariable("id")long id, RoomType roomType) {
 		Hotel hotel = hotelService.getById(id);
 		List<RoomType> listType = roomTypeService.getByHotelId(id);
 		List<Room> listRoom = roomService.getByHotelId(id);

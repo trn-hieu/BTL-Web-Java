@@ -10,5 +10,6 @@ import com.example.demo.model.RoomType;
 public interface RoomTypeService {
 	List<RoomType> getByHotelId(long id);
 	RoomType getById(long id);
+	RoomType save(RoomType type);
 }
  

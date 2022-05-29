@@ -22,6 +22,14 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
+<style type="text/css">
+.wrapper{
+	display: flex;
+	justify-content: flex-start;
+	margin: 6px 0 6px 0;
+}
+
+</style>
 </head>
 <body>
 	<div th:replace="/header :: header"></div>
@@ -32,26 +40,47 @@
 				<div style="width: 100%;"></div>
 				<div>
 					<h4>Thông tin khách hàng</h4>
-					<div th:text="${booking.customer.firstName + ' ' + booking.customer.lastName}"></div>
-					<div th:text="${booking.customer.phoneNumber}"></div>
+					<div class="wrapper">
+						<div style="width: 170px;">Họ tên: </div><div th:text="${booking.customer.firstName + ' ' + booking.customer.lastName}"></div>
+					</div>
+					<div class="wrapper">
+						<div style="width: 170px;">Số điện thoại: </div><div th:text="${booking.customer.phoneNumber}"></div>
+					</div>
 				</div>
 				<br>
 				<div>
 					<h4>Thông tin đặt phòng</h4>
-					<span>Khách sạn: </span><span th:text="${booking.type.hotel.name}"></span><br>
-					<span>Địa chỉ: </span><span th:text="${booking.type.hotel.address}"></span><br>
-					<span>Loại phòng: </span><span th:text="${booking.type.name}"></span><br>
-					<span >Thời gian nhận phòng: </span><span th:text="${#dates.format(booking.dateFrom,'dd/MM/yyyy') + ' '+booking.checkIn}"></span><br>
-					<span >Thời gian trả phòng: </span><span th:text="${#dates.format(booking.dateTo,'dd/MM/yyyy') + ' '+booking.checkOut}"></span><br>
-					<form method="post" th:action="@{/admin/booking/accept}">
+					<div class="wrapper">
+						<div style="width: 170px;">Khách sạn: </div><div th:text="${booking.type.hotel.name}"></div>
+					</div>
+					<div class="wrapper">
+						<div style="width: 170px;">Địa chỉ: </div><div th:text="${booking.type.hotel.address}"></div>
+					</div>
+					<div class="wrapper">
+						<div style="width: 170px;">Loại phòng: </div><div th:text="${booking.type.name}"></div>
+					</div>
+					<div class="wrapper">	
+						<div style="width: 170px;">Thời gian nhận phòng: </div><div th:text="${#dates.format(booking.dateFrom,'dd/MM/yyyy') + ' '+booking.checkIn}"></div>
+					</div>
+					<div class="wrapper">	
+						<div style="width: 170px;">Thời gian trả phòng: </div><div th:text="${#dates.format(booking.dateTo,'dd/MM/yyyy') + ' '+booking.checkOut}"></div>
+					</div>
+					<form method="post" th:action="@{/admin/booking/accept}" id="accept-form">
 						<input type="hidden" th:value="${booking.id}" name="booking_id">
-						<span>Chọn phòng: </span><span>
-							<select name="room_id">
-								<option th:each="room : ${room}" th:text=${room.name}  th:value="${room.id}"></option>
-						</select>
-						<button type="submit">Xác nhận</button>
+						<div class="wrapper">
+							<div style="width: 170px;">Phòng còn trống </div>
+							<select name="room_id" class="form-control" style="width: 150px;">
+									<option th:each="room : ${room}" th:text=${room.name}  th:value="${room.id}"></option>
+							</select>
+						</div>
 					</form>
-					</span>
+					<form method="post" th:action="@{/admin/booking/decline}" id="decline-form">
+						<input type="hidden" th:value="${booking.id}" name="booking_id">
+					</form>
+					<div style="margin: 20px;"></div>
+					<a th:href="@{/admin/booking}"><button class="btn btn-secondary">Quay lại</button> </a>
+					<button type="submit" class="btn btn-danger" form="decline-form">Hủy yêu cầu</button>
+					<button type="submit" class="btn btn-primary" form="accept-form">Xác nhận</button>
 				</div>
 			</div>
 		</div>

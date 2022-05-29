@@ -27,7 +27,6 @@ public class StatisticController {
 		if(dateTo != null && dateTo.equals("")) dateTo=null;
 		List<BookingStatistic> statistic = statisticService.getBookingStatistic(dateFrom, dateTo);
 		model.addAttribute("statistic", statistic);
-		System.out.println("AAAAAAAAAA");
 		return "booking-statistic-all";
 	}
 	
