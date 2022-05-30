@@ -64,7 +64,7 @@ public class BookingController {
 		booking.setType(entityManager.getReference(RoomType.class, roomTypeId));
 		booking.setCustomer(customerRepo.findByUsername(principal.getName()));
 		bookingService.save(booking);
-		return "redirect:../";
+		return "redirect:/booking?create=success";
 	}
 	
 	@GetMapping
@@ -83,6 +83,6 @@ public class BookingController {
 			booking.setStatus(BookingStatus.CANCEL.toString());
 			bookingService.save(booking);
 		}
-		return "redirect:/booking";
+		return "redirect:/booking?cancel=success";
 	}
 }

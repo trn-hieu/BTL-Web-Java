@@ -46,7 +46,7 @@ public class AdminBookingController {
 	@PostMapping("/decline")
 	public String declineBooking(@RequestParam("booking_id")long id) {
 		bookingService.setStatus(id, BookingStatus.REFUSED.toString());
-		return "redirect:/admin/booking";
+		return "redirect:/admin/booking?decline=true";
 	}
 	
 	@GetMapping("/request/{id}")
@@ -71,7 +71,7 @@ public class AdminBookingController {
 		booking.setRoom(entityManager.getReference(Room.class, roomId));
 		booking.setStatus(BookingStatus.ACCEPTED.toString());
 		bookingService.save(booking);
-		return "redirect:/admin/booking";
+		return "redirect:/admin/booking?accept=true";
 	}
 	
 	@GetMapping("/detail")

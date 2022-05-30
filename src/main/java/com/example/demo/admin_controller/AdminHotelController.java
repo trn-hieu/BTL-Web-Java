@@ -77,13 +77,13 @@ public class AdminHotelController {
 			@RequestParam(name = "file",required = false) MultipartFile[] files) throws Exception, IOException  {
 		if(serviceId != null) {
 			List<Service> listServices = new ArrayList<>();
-			for(int i=0;i<serviceId.length;i++) {
-				listServices.add(entityManager.getReference(Service.class, serviceId[i]));
+			for(int i=0;i<serviceId.length;i++) {											// instead of getting all service object by id using JPA
+				listServices.add(entityManager.getReference(Service.class, serviceId[i]));	// we create instance of service object using EntityManager
 			}
-			hotel.setServices(listServices);
+			hotel.setServices(listServices);												// add service to hotel
 		}
 		List<Image> images = new ArrayList<>();
-		for(int i=0;i<files.length;i++){
+		for(int i=0;i<files.length;i++){                                              // process to save image
 			File temp = new File(saveHotelImagePath+files[i].getOriginalFilename()); //create file 
 			temp.createNewFile();													
 			files[i].transferTo(temp);                                               // save submited file to that file was just created
@@ -94,7 +94,7 @@ public class AdminHotelController {
 		
 		hotel.setImages(images);
 		hotelService.save(hotel);
-		return "redirect:/admin/hotel";
+		return "redirect:/admin/hotel?create=success";
 	}
 	
 	@GetMapping("/update/{id}")
@@ -116,12 +116,12 @@ public class AdminHotelController {
 	public String updateHotel( @PathVariable("id")long id, Hotel hotel,@RequestParam("service")long[] serviceId)throws Exception {
 		List<Service> listServices = new ArrayList<>();
 		for(int i=0;i<serviceId.length;i++) {
-			listServices.add(entityManager.getReference(Service.class, serviceId[i]));
+			listServices.add(entityManager.getReference(Service.class, serviceId[i])); // create instance of service object using Entity Manager
 		}
 		
 		hotel.setServices(listServices);
 		hotelService.save(hotel);
-		return "redirect:/admin/hotel";
+		return "redirect:/admin/hotel?update=success";
 	}
 	
 }

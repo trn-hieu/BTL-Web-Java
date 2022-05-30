@@ -88,14 +88,14 @@ public class SecurityConfiguration {
 			.anyRequest().authenticated()
 			.and()
 			.formLogin()
-			.loginPage("/admin/login")
+			.loginPage("/admin/login").defaultSuccessUrl("/admin")
 			.permitAll()
 			.and()
 			.logout()
 			.invalidateHttpSession(true)
 			.clearAuthentication(true)
 			.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-			.logoutSuccessUrl("/login?logout")
+			.logoutSuccessUrl("/admin/login?logout")
 			.permitAll();
 		}
 	}

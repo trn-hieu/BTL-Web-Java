@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link href="images/favicon.png" rel="shortcut icon">
     <title>Ludus - Electronics, Apparel, Computers, Books, DVDs & more</title>
-	
+	<script src="/js/jquery-3.6.0.min.js"></script>
 	<script type="text/javascript" src="/js/script.js"></script>
 	
     <!--====== Google Font ======-->
@@ -38,6 +38,18 @@
 		  cursor: pointer;
 		  text-decoration: none;
 		}
+	.alert {
+	    position: relative;
+	    padding: .75rem 1.25rem;
+	    margin-bottom: 1rem;
+	    border: 1px solid transparent;
+	    border-radius: .25rem;
+	}
+	.alert-success {
+	    color: #155724;
+	    background-color: #d4edda;
+	    border-color: #c3e6cb;
+	}
     </style>
 </head>
 <body class="config">
@@ -48,7 +60,19 @@
     </div>
 
     <!--====== Main App ======-->
-    <div id="app">
+    <div id="app" style="position: relative;">
+		<!--====== Notification ======-->
+		<div style="position: absolute;width: 100%;margin-top: 20px;z-index: 999;">
+			<div class="container">
+				<div th:if="${ (param.create != null) &&(param.create[0] == 'success')}">
+						<div class="alert alert-success">Bạn đã đặt phòng thành công</div>
+				</div>
+				<div th:if="${ (param.cancel != null) &&(param.cancel[0] == 'success')}">
+						<div class="alert alert-success">Hủy yêu cầu thành công</div>
+				</div>
+			
+			</div>
+		</div>
 
         <!--====== Main Header ======-->
         <header th:replace="/header-client :: header-client"></header>
@@ -355,7 +379,15 @@
         ga('send', 'pageview')
         
         
-  
+  window.setTimeout(function() {
+								    $(".alert.alert-success").fadeTo(500, 0).slideUp(500, function(){
+								        $(this).remove(); 
+								    });
+								}, 2000);
+								
+	// init booking status filter
+	const status  = getUrlParameter('status');
+	if(status != null) $("#my-order-sort").val(status);
         
     </script>
     <script src="https://www.google-analytics.com/analytics.js" async defer></script>
