@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -27,7 +28,7 @@ public class Hotel {
 			inverseJoinColumns = @JoinColumn(name="service_id"))
 	private List<Service> services;
 	
-	@OneToMany(mappedBy = "hotel")
+	@OneToMany(mappedBy = "hotel", cascade = CascadeType.ALL)
 	private List<RoomType> types;
 	
 	@OneToMany(mappedBy = "hotel", cascade = CascadeType.PERSIST)

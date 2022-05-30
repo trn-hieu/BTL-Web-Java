@@ -2,6 +2,7 @@ package com.example.demo.model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -37,8 +38,8 @@ public class RoomType {
 	
 	private float price;
 	
-	@ManyToOne
-	@JoinColumn(name = "hotel_id")
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "hotel_id",updatable = false)
 	private Hotel hotel;
 	
 	@OneToMany(mappedBy = "type", fetch = FetchType.LAZY)

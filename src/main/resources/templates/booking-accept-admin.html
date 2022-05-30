@@ -67,11 +67,14 @@
 					</div>
 					<form method="post" th:action="@{/admin/booking/accept}" id="accept-form">
 						<input type="hidden" th:value="${booking.id}" name="booking_id">
-						<div class="wrapper">
+						<div class="wrapper" th:unless="${#lists.isEmpty(room)}">
 							<div style="width: 170px;">Phòng còn trống </div>
 							<select name="room_id" class="form-control" style="width: 150px;">
 									<option th:each="room : ${room}" th:text=${room.name}  th:value="${room.id}"></option>
 							</select>
+						</div>
+						<div class="wrapper" th:if="${#lists.isEmpty(room)}">
+							<div style="color: red;"><i>Đã hết phòng trống</i></div>
 						</div>
 					</form>
 					<form method="post" th:action="@{/admin/booking/decline}" id="decline-form">
@@ -80,7 +83,7 @@
 					<div style="margin: 20px;"></div>
 					<a th:href="@{/admin/booking}"><button class="btn btn-secondary">Quay lại</button> </a>
 					<button type="submit" class="btn btn-danger" form="decline-form">Hủy yêu cầu</button>
-					<button type="submit" class="btn btn-primary" form="accept-form">Xác nhận</button>
+					<button type="submit" class="btn btn-primary" form="accept-form" th:unless="${#lists.isEmpty(room)}">Xác nhận</button>
 				</div>
 			</div>
 		</div>

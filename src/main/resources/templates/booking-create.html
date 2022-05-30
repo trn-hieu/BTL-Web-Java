@@ -9,7 +9,8 @@
     <meta name="author" content="">
     <link href="images/favicon.png" rel="shortcut icon">
     <title>Ludus - Electronics, Apparel, Computers, Books, DVDs & more</title>
-
+	<script src="/js/jquery-3.6.0.min.js"></script>
+	<script type="text/javascript" src="/js/script.js" ></script>
     <!--====== Google Font ======-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
 
@@ -78,11 +79,13 @@
 	                                	<div style="width: 100%;display: flex;flex-wrap: wrap;">
 	                                		<div style="width: 50%">
 		                                			<div class="label-fix">Ngày nhận phòng</div>
-		                                			<input type="date" class="input-text input-text--primary-style width-fix" name="date_in" th:field=*{dateFrom} required="required">
+		                                			<input type="date" id="date_in" class="input-text input-text--primary-style width-fix" onchange="checkDate()"
+		                                				name="date_in" th:field=*{dateFrom} required="required">
 	                                		</div>
 	                                		<div style="width: 50%">
 	                                			<div class="label-fix">Ngày trả phòng</div>
-	                                			<input type="date" class="input-text input-text--primary-style width-fix" name="date_out" th:field=*{dateTo} required="required">
+	                                			<input type="date" id="date_out" class="input-text input-text--primary-style width-fix"  onchange="checkDate()"
+	                                				name="date_out" th:field=*{dateTo} required="required">
 	                                		</div>
 	                                		<div style="width: 50%">
 	                                			<div class="label-fix">Giờ nhận phòng</div>
@@ -300,6 +303,7 @@
 
     <!--====== Google Analytics: change UA-XXXXX-Y to be your site's ID ======-->
     <script>
+    console.log($('#date_out').val());
         window.ga = function() {
             ga.q.push(arguments)
         };
@@ -307,6 +311,15 @@
         ga.l = +new Date;
         ga('create', 'UA-XXXXX-Y', 'auto');
         ga('send', 'pageview')
+        
+        //set input date to curent date
+        var now = new Date();
+		var curentDate = dateToYMD(now);
+		now =now.addDays(1);
+		var nextDate = dateToYMD(now);
+		 $('#date_in').val(curentDate);
+		 $('#date_in').attr('min', curentDate);
+		 $('#date_out').attr('min', curentDate);
     </script>
     <script src="https://www.google-analytics.com/analytics.js" async defer></script>
 

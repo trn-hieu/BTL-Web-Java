@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Cập nhật thông tin phòng</title>
+<link rel="icon" href="/images/icon.png">
+<link rel="stylesheet" href="../static/css/all.css"
+	th:href="@{/css/all.css}">
+<link href="../static/css/styles.css" th:href="@{/css/styles.css}"
+	rel="stylesheet" />
+<link
+	href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css"
+	rel="stylesheet" crossorigin="anonymous" />
+
+<script src="/js/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="/js/script.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+	integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+<style type="text/css">
+.width-fix {
+	width: 75% !important;
+}
+.wrapper{
+	display: flex;
+	justify-content: flex-start;
+}
+</style>
+</head>
+<body>
+	<div th:replace="/header :: header"></div>
+	<div style="display: flex;">
+		<div th:replace="/MenuView :: nav-bar"></div>
+		<div class="container" style="margin-top: 10px;">
+			<div class="row" style="display: block;">
+				<h3 style="margin: 10px 0 15px 0;text-align: center;">
+						Cập nhật thông tin phòng
+				</h3>
+				<form th:action="@{/admin/type/update/{id}(id=${type.id})}" method="post" th:object="${type}" id="roomType-update-form">
+					<div class="form-inline" style="margin-top: 10px;">
+						<div style="width: 50%;margin-bottom: 10px;">
+							<div>Loại phòng:</div>
+							<input class="form-control width-fix" type="text"
+								th:field="*{name}" required="required">
+						</div>
+						<div style="width: 50%;margin-bottom: 15px;">
+							<div>Hướng phòng:</div>
+							<input class="form-control width-fix" type="text"
+								th:field="*{roomView}"  required="required">
+						</div>
+						<div style="width: 50%;margin-bottom: 15px;">
+							<div>Loại giường:</div>
+							<input class="form-control width-fix" type="text"
+								th:field="*{bedInfor}" required="required">
+						</div>
+						<div style="width: 50%;margin-bottom: 15px;">
+							<div>Số khách:</div>
+							<input class="form-control width-fix" type="text"
+								th:field="*{capacity}"  required="required">
+						</div>
+						<div style="width: 50%;margin-bottom: 15px;">
+							<div>Diện tích:</div>
+							<input class="form-control width-fix" type="number" min="1"
+								th:field="*{roomArea}" required="required">
+						</div>
+						<div style="width: 50%;margin-bottom: 15px;">
+							<div>Giá phòng:</div>
+							<input class="form-control width-fix" type="number" min="1"
+								th:field="*{price}"  required="required">
+						</div>
+					</div>
+				</form>
+				<div style="text-align: center;">
+					<a th:href="@{/admin/hotel/{id}(id=${type.hotel.id})}"><button type="button" class="btn btn-secondary" >
+							Quay lại</button></a>
+					<button type="submit" class="btn btn-primary" form="roomType-update-form">Cập nhật</button>
+				</div>	
+			</div>
+		</div>
+	</div>
+
+	
+
+
+</body>
+</html>

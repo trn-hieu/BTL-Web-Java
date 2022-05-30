@@ -24,16 +24,7 @@ $(document).ready(function() {
 		}
 	});
 
-	$('#button-confirm-cinema').click(function(e) {
-		var id = $('input[name="cinema"]:checked').val();
-		if (id == null) {
 
-			$('#cinema-suggest').hide();
-			$('#cinema-notify').show();
-		}
-		else
-			window.location.href = "/showtime/create/" + id;
-	});
 
 
 	function doFilter(input) {
@@ -82,51 +73,28 @@ $(document).ready(function() {
 });
 
 
+Date.prototype.addDays = function(days) {
+    var date = new Date(this.valueOf());
+    date.setDate(date.getDate() + days);
+    return date;
+}
 
 
-function checkDate() {
-	/*$("#showtime-add-form").submit(function(e){
-			e.preventDefault(e);
-		});*/
 
-	// lay thoi gian cua input Date
-	var date = $('#txtDate').val().split("-");
-	console.log(date, $('#txtDate').val())
-	inDay = date[2];
-	inMonth = date[1];
-	inYear = date[0];
-	/*alert(inYear+"-"+inMonth+"-"+inDay );*/
-	inputDate = inYear + "-" + inMonth + "-" + inDay;
-
-	//lay thoi gian hien tai (nam, ngay, thang)
-	d = new Date();
-	month = d.getMonth() + 1;
-	day = d.getDate();
-	curentDate = d.getFullYear() + '-' +
-		(month < 10 ? '0' : '') + month + '-' +
-		(day < 10 ? '0' : '') + day;
-
-	/*alert(document.getElementById("start").value);*/
-
-
-	//lay gio phut hien tai
-	var curentTime = (d.getHours() < 10 ? '0' : '') + d.getHours() + ":" +
-		(d.getMinutes() < 10 ? '0' : '') + d.getMinutes();
-
-	var inputTime = onTimeChange('start');
-	//alert(curentTime +"   "+inputTime);
-
-	// kiem tra thoi gian nhap co nho hon thoi gian hien tai ko
-	if (inputDate == curentDate && inputTime <= curentTime) {
-		if (!$(".alert.alert-warning").is(":visible")) {
-			$(".alert.alert-warning").toggle('show');
-			window.setTimeout(function() {
-				$(".alert.alert-warning").toggle('hide');
-			}, 6000);
-		}
-		return false;
-	} else return true;
-
+function checkDate(){
+	var date_in =$('#date_in').val();
+	var date_out = $('#date_out').val(); console.log(date_out);
+	if(date_out < date_in && date_in != '' && date_out != '') {
+		console.log(true);
+	$('#date_in').val(date_out);
+	$('#date_out').val(date_in);
+	}else if(date_out == date_in && date_in != '' && date_out != ''){
+		var date = new Date(date_in);
+		date = date.addDays(1)
+		$('#date_out').val(dateToYMD(date));
+		console.log(date);
+	}
+	
 }
 
 function onTimeChange(id) {

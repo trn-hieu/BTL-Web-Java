@@ -86,36 +86,14 @@
 								<td th:text="${type.bedInfor}"></td>
 								<td th:text="${type.capacity}"></td>
 								<td th:text="${#numbers.formatDecimal(type.price, 1, 'DEFAULT', 0, 'DEFAULT')}"></td>
-								<!-- <td style="display: flex; justify-content: flex-end;"><a
-									th:href="@{'/admin/type?type_id='+${type.id}}"><button
-											type="button" class="btn btn-success">Chi tiết</button></a></td> -->
+								<td style="display: flex; justify-content: flex-end;"><a
+									th:href="@{/admin/type/update/{id}(id=${type.id})}"><button
+											type="button" class="btn btn-success">Sửa</button></a></td>
 							</tr>
 						</tbody>
 					</table>
 				</div>
-				<!-- <div>
-					<h3>Các phòng hiện có</h3>
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>#</th>
-								<th>Tên phòng</th>
-								<th>Loại phòng</th>
-								<th></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr th:each="room,state : ${listRoom}">
-								<td th:text="${state.count}"></td>
-								<td th:text="${room.name}"></td>
-								<td th:text=${room.type.name}></td>
-								<td style="display: flex; justify-content: flex-end;"><a
-									th:href="@{/admin/hotel/{id}(id=${room.id})}"><button
-											type="button" class="btn btn-success">Chi tiết</button></a></td>
-							</tr>
-						</tbody>
-					</table>
-				</div> -->
+			
 
 			</div>
 		</div>
