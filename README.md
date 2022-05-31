@@ -54,7 +54,7 @@ Những người được vào hệ thống và chức năng mỗi người đư
 
 
 ### Giao diện dành cho nhân viên
-`Giao diện quản lý thông khách sạn`
+`Giao diện quản lý thông tin khách sạn`
 ![image](https://user-images.githubusercontent.com/84428937/171131092-d6bd6d46-a664-4f18-95fa-7a2339831e1a.png) <br>
 
 `Giao diện sửa thông tin khách sạn`
