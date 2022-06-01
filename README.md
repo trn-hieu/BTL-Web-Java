@@ -14,7 +14,7 @@ password: 123456
 ## Đóng góp của các thành viên
 - Trần Trung Hiếu: Chức năng đặt phòng, đăng nhập, xem thống kê
 - Ngô Văn Quyết: Khách hàng xem danh sách khách sạn, danh sách phòng
-- Đăng Thị Hoa: 
+- Đặng Thị Thoa: 
 
 ## Mô tả dự án
 Hệ thống quản lý đặt phòng khách sạn là phần mềm chạy trên nền tảng Web. Hệ thống được thiết kế dành cho khách hàng và nhân viên khách sạn. Khách hàng sử dụng phần mềm để xem thông tin khách sạn, chọn phòng, đặt phòng. Nhân viên có thể dùng phần mềm để quản lý thông tin khách san, loại phòng, xác nhận đơn đặt phòng của khách hàng.
